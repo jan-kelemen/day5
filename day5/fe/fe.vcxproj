@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="action.cpp" />
+    <ClCompile Include="action_cache.cpp" />
+    <ClCompile Include="action_factory.cpp" />
     <ClCompile Include="block.cpp" />
     <ClCompile Include="block_sequence.cpp" />
     <ClCompile Include="main.cpp" />
@@ -27,9 +30,11 @@
     <ClCompile Include="operation_factory.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="action.h" />
+    <ClInclude Include="action_cache.h" />
+    <ClInclude Include="action_factory.h" />
     <ClInclude Include="block.h" />
     <ClInclude Include="block_sequence.h" />
-    <ClInclude Include="cache.h" />
     <ClInclude Include="factory.h" />
     <ClInclude Include="operation.h" />
     <ClInclude Include="operation_cache.h" />

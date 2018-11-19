@@ -27,6 +27,15 @@
     <ClCompile Include="block_sequence.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="action.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="action_factory.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="action_cache.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="operation.h">
@@ -47,7 +56,13 @@
     <ClInclude Include="factory.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="cache.h">
+    <ClInclude Include="action.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="action_factory.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="action_cache.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
