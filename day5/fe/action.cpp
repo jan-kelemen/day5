@@ -4,6 +4,7 @@
 #include <iterator>
 #include <filesystem>
 #include <string>
+#include <sstream>
 
 #include "action_factory.h"
 
@@ -47,9 +48,11 @@ namespace fe
     auto name = ""s;
     istream >> name;
     auto operation = cache(name);
+    auto argument_count = operation->argument_count();
     auto params = std::vector<double>();
-    std::copy_n(std::istream_iterator<double>(istream), operation->argument_count(), std::back_inserter(params));
-    sequence.add(block(params, operation));
+    if(argument_count != 0)
+      std::copy_n(std::istream_iterator<double>(istream), operation->argument_count(), std::back_inserter(params));    
+    sequence.add(block(std::move(params), operation));
     ostream << "Block added successfully\n";
   }
 
@@ -139,7 +142,7 @@ namespace fe
     ostream << "Sequence:\n";
     auto const&[begin, end] = sequence.blocks();
     for (auto i = std::size_t{ 0 }; i != sequence.size(); ++i)
-      ostream << '\t' << sequence[i] << '\n';
+      ostream << '\t' << sequence[i];
   }
 
   class execute_sequence : public action
@@ -242,7 +245,7 @@ namespace fe
     using namespace std::string_literals;
     namespace fs = std::filesystem;
 
-    ostream << "Enter name of the file with input values and name of the file with output values (e.g. input.txt output.txt):\n";
+    ostream << "Enter name of the output file (e.g. sequence.txt):\n";
     auto output = ""s;
     istream >> output;
 
@@ -251,5 +254,64 @@ namespace fe
 
     auto const&[begin, end] = sequence.blocks();
     std::copy(begin, end, std::ostream_iterator<block>(output_stream));
+  }
+
+  class load_sequence : public action
+  {
+    static std::size_t factory_id;
+  public:
+    constexpr static auto registration_id = "{F185C1B5-5E20-4005-854C-0B653088811B}";
+
+    load_sequence() : action(registration_id, "load sequence") {}
+
+    load_sequence(load_sequence const&) = default;
+    load_sequence(load_sequence&&) = default;
+
+    void operator()(operation_cache const& cache, block_sequence& sequence, std::ostream& ostream, std::istream& istream) const override;
+
+    load_sequence& operator=(load_sequence const&) = default;
+    load_sequence& operator=(load_sequence&&) = default;
+
+    virtual ~load_sequence() = default;
+  };
+
+  std::size_t load_sequence::factory_id = action_factory.register_creator(registration_id, []() { return std::make_unique<load_sequence>(); });
+
+  void load_sequence::operator()(operation_cache const& cache, block_sequence& sequence, std::ostream& ostream, std::istream& istream) const
+  {
+    using namespace std::string_literals;
+    namespace fs = std::filesystem;
+
+    ostream << "Enter name of the file with sequence (e.g. sequence.txt)\n";
+    auto input = ""s;
+    istream >> input;
+
+    auto input_path = absolute(fs::path(input));
+    if (!exists(input_path))
+    {
+      ostream << "Input file doesn't exist\n";
+      return;
+    }
+    auto input_stream = std::ifstream(input_path.c_str());
+
+    auto tmp_sequence = block_sequence();
+    auto line = ""s;
+    while(std::getline(input_stream, line))
+    {
+      auto sstream = std::istringstream(line);
+      auto name = ""s;
+      auto operation = cache(name);
+      auto params = std::vector<double>();
+      for (auto i = std::size_t{ 0 }; i != operation->argument_count(); ++i)
+      {
+        auto v = 0.;
+        sstream >> v;
+        params.push_back(v);
+      }
+      tmp_sequence.add(block(std::move(params), operation));
+    }
+
+    sequence = std::move(tmp_sequence);
+    ostream << "Sequence loaded successfully\n";
   }
 }

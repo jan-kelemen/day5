@@ -40,7 +40,7 @@ namespace fe
     stream << block.operation_->name() << ' ';
     auto params = std::accumulate(block.params_.cbegin(), block.params_.cend(), ""s, 
       [](std::string acc, double v) { return acc + ' ' + std::to_string(v); });
-    stream << params;
+    stream << params << '\n';
 
     return stream;
   }
