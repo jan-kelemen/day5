@@ -3,10 +3,13 @@
 #include <iosfwd>
 #include <string>
 
+#include "operation_cache.h"
 #include "block_sequence.h"
 
 namespace fe
 {
+  class action_cache;
+
   class action
   {
   public:
@@ -16,7 +19,7 @@ namespace fe
 
     std::string const& id() const;
     std::string const& name() const;
-    virtual void operator()(block_sequence& sequence, std::ostream& ostream, std::istream& istream) const = 0;
+    virtual void operator()(operation_cache const& cache, block_sequence& sequence, std::ostream& ostream, std::istream& istream) const = 0;
 
     action& operator=(action const&) = default;
     action& operator=(action&&) = default;
