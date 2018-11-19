@@ -18,6 +18,16 @@ namespace fe
     ;
   }
 
+  bool operator==(operation const& lhs, operation const& rhs)
+  {
+    return lhs.id() == rhs.id();
+  }
+
+  bool operator!=(operation const& lhs, operation const& rhs)
+  {
+    return !(lhs == rhs);
+  }
+
   class identity : public operation
   {
     static std::size_t factory_id;

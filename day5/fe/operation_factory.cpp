@@ -14,7 +14,7 @@ namespace fe
     return creators_.size();
   }
 
-  std::unique_ptr<fe::operation> fe::op_factory::operator()(std::string const& id) const
+  std::unique_ptr<operation> op_factory::operator()(std::string const& id) const
   {
     return creators_.at(id)();
   }

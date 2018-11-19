@@ -1,7 +1,5 @@
 #include "operation_cache.h"
 
-#include "operation_factory.h"
-
 namespace fe
 {
   operation_cache::operation_cache()
@@ -21,9 +19,9 @@ namespace fe
     return std::make_pair(cached_names_.cbegin(), cached_names_.cend());
   }
 
-  operation* operation_cache::operator()(std::string const& name) const
+  std::shared_ptr<operation const> operation_cache::operator()(std::string const& name) const
   {
-    return cached_operations_.at(name).get();
+    return cached_operations_.at(name);
   }
 }
 

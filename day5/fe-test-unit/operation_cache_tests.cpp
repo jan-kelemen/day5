@@ -6,7 +6,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace fe::test::unit
 {
-  TEST_CLASS(operation_cache_test)
+  TEST_CLASS(operation_cache_tests)
   {
   public:
     TEST_METHOD(operation_cache_contains_at_least_identity_operation)

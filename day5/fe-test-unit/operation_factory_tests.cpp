@@ -6,7 +6,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace fe::test::unit
 {
-  TEST_CLASS(operation_factory_test)
+  TEST_CLASS(operation_factory_tests)
   {
   public:
     TEST_METHOD(double_registration_throws_invalid_argument)

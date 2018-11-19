@@ -27,4 +27,7 @@ namespace fe
     std::size_t argument_count_{};
     std::string name_{};
   };
+
+  bool operator==(operation const& lhs, operation const& rhs);
+  bool operator!=(operation const& lhs, operation const& rhs);
 }
