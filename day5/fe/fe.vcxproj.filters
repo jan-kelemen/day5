@@ -9,13 +9,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="factory.h">
-      <Filter>include</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="operation.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="operation_factory.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="operation.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="operation_factory.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
