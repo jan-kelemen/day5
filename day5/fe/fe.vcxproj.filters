@@ -18,12 +18,18 @@
     <ClCompile Include="operation_factory.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="operation_cache.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="operation.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="operation_factory.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="operation_cache.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,6 +4,7 @@
 #include <map>
 #include <memory>
 #include <string>
+#include <vector>
 
 #include "operation.h"
 
@@ -16,7 +17,7 @@ namespace fe
 
     std::size_t register_creator(std::string const& id, creator_t creator);
     std::unique_ptr<operation> operator()(std::string const& id) const;
-
+    std::vector<std::string> registered_ids() const;
   private:
     std::map<std::string, creator_t, std::less<>> creators_;
   };

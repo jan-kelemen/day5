@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="operation_cache_tests.cpp" />
     <ClCompile Include="operation_factory_tests.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -1,5 +1,6 @@
 #include "operation_factory.h"
 
+#include <algorithm>
 #include <stdexcept>
 
 namespace fe
@@ -16,6 +17,16 @@ namespace fe
   std::unique_ptr<fe::operation> fe::op_factory::operator()(std::string const& id) const
   {
     return creators_.at(id)();
+  }
+
+  std::vector<std::string> op_factory::registered_ids() const
+  {
+    auto rv = std::vector<std::string>();
+    rv.reserve(creators_.size());
+
+    std::transform(creators_.cbegin(), creators_.cend(), std::back_inserter(rv), [](const auto& pair) { return pair.first; });
+
+    return rv;
   }
 
   static auto counter = 0;
