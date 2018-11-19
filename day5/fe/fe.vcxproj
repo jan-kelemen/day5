@@ -29,6 +29,8 @@
   <ItemGroup>
     <ClInclude Include="block.h" />
     <ClInclude Include="block_sequence.h" />
+    <ClInclude Include="cache.h" />
+    <ClInclude Include="factory.h" />
     <ClInclude Include="operation.h" />
     <ClInclude Include="operation_cache.h" />
     <ClInclude Include="operation_factory.h" />

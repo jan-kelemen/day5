@@ -1,25 +1,12 @@
 #pragma once
 
-#include <functional>
-#include <map>
-#include <memory>
-#include <string>
-#include <vector>
-
 #include "operation.h"
+#include "factory.h"
 
 namespace fe
 {
-  class op_factory
+  class op_factory : public factory<operation>
   {
-  public:
-    using creator_t = std::function<std::unique_ptr<operation>()>;
-
-    std::size_t register_creator(std::string const& id, creator_t creator);
-    std::unique_ptr<operation> operator()(std::string const& id) const;
-    std::vector<std::string> registered_ids() const;
-  private:
-    std::map<std::string, creator_t, std::less<>> creators_;
   };
 
   extern op_factory& operation_factory;

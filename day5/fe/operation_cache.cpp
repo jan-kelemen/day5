@@ -1,5 +1,7 @@
 #include "operation_cache.h"
 
+#include "operation_factory.h"
+
 namespace fe
 {
   operation_cache::operation_cache()

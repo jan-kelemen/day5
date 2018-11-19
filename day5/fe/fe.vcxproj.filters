@@ -44,5 +44,11 @@
     <ClInclude Include="block_sequence.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="factory.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="cache.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
