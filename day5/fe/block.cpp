@@ -1,5 +1,8 @@
 #include "block.h"
 
+#include <string>
+#include <numeric>
+
 namespace fe
 {
   auto const check_argument_count = [](std::size_t params_count, std::shared_ptr<operation const> const& operation)
@@ -28,5 +31,17 @@ namespace fe
   bool operator!=(block const& lhs, block const& rhs)
   {
     return !(lhs == rhs);
+  }
+
+  std::ostream& operator<<(std::ostream& stream, block const& block)
+  {
+    using namespace std::string_literals;
+
+    stream << block.operation_->name() << ' ';
+    auto params = std::accumulate(block.params_.cbegin(), block.params_.cend(), ""s, 
+      [](std::string acc, double v) { return acc + ' ' + std::to_string(v); });
+    stream << params;
+
+    return stream;
   }
 }

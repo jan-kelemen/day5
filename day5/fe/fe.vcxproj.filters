@@ -24,6 +24,9 @@
     <ClCompile Include="block.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="block_sequence.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="operation.h">
@@ -36,6 +39,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="block.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="block_sequence.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

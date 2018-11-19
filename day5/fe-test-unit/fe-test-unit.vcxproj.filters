@@ -15,5 +15,8 @@
     <ClCompile Include="block_tests.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="block_sequence_tests.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="block.cpp" />
+    <ClCompile Include="block_sequence.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="operation.cpp" />
     <ClCompile Include="operation_cache.cpp" />
@@ -27,6 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="block.h" />
+    <ClInclude Include="block_sequence.h" />
     <ClInclude Include="operation.h" />
     <ClInclude Include="operation_cache.h" />
     <ClInclude Include="operation_factory.h" />

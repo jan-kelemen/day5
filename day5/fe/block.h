@@ -1,7 +1,9 @@
 #pragma once
 
-#include "operation.h"
+#include <iosfwd>
 #include <memory>
+
+#include "operation.h"
 
 namespace fe
 {
@@ -24,8 +26,11 @@ namespace fe
     std::shared_ptr<operation const> operation_;
 
     friend bool operator==(block const&, block const&);
+    friend std::ostream& operator<<(std::ostream&, block const&);
   };
 
   bool operator==(block const& lhs, block const& rhs);
   bool operator!=(block const& lhs, block const& rhs);
+
+  std::ostream& operator<<(std::ostream& stream, block const& block);
 }
